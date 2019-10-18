@@ -1,6 +1,6 @@
-import App from './App.svelte';
+import Query from './Components/mainPage.svelte';
 
-const app = new App({
+const app = new Query({
 	target: document.body,
 	props: {
 		name: 'World'

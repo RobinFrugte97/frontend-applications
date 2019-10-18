@@ -1,7 +1,4 @@
 <script>
-	export let name;
-
-	const el = document.querySelector('img')
 	const url ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql"
 	//Note that the query is wrapped in es6 template strings to allow for easy copy pasting
 	const query = `
@@ -52,13 +49,13 @@
 	}
 </style>
 
-<h1>Hello {name}!</h1>
+<h1>Architectuur van Indonesië</h1>
 <ul>
 	{#each data as source}
-		<ul>
-
-		</ul>
+	<a href="#"><li>
 		<h2>{source.modelNaam.value}</h2>
 		<img src={source.imageModel.value} alt={source.modelNaam.value}>
+	</li></a>
+
 	{/each}
 </ul>
