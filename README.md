@@ -2,7 +2,7 @@
 
 This app is a visualization of Indonesia on which every prominent location is indicated with a certain architecture of that location. You can navigate through the years and watch the architecture of every location change. You can get more information about a certain architecture by clicking on it.
 
-![Concept visualization](http://prntscr.com/pkza83)
+![Concept visualization](https://imgur.com/a/rfOjbcb)
 
 # svelte app
 
