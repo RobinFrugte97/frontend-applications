@@ -1,10 +1,6 @@
-import Query from './Components/mainPage.svelte';
+import App from "./App.svelte";
 
-const app = new Query({
-	target: document.body,
-	props: {
-		name: 'World'
-	}
+new App({
+  target: document.getElementById("app"),
+  hydrate: true
 });
-
-export default app;

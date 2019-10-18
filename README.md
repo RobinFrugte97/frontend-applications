@@ -2,12 +2,11 @@
 
 This app is a visualization of Indonesia on which every prominent location is indicated with a certain architecture of that location. You can navigate through the years and watch the architecture of every location change. You can get more information about a certain architecture by clicking on it.
 
-![Concept visualization](http://prntscr.com/pkza83)
+![Concept visualization](https://github.com/RobinFrugte97/frontend-applications/blob/master/src/Screenshot_13.png)
 
 # svelte app
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
+This uses the framework [Svelte](https://svelte.dev).
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
