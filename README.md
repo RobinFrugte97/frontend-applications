@@ -42,7 +42,7 @@ The data I'm using comes from the API of [Netwerk digitaal erfgoed](https://www.
 
 The SPARQL query I use the retrieve all the data I need in the application:
 
-`
+```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dct: <http://purl.org/dc/terms/>
@@ -58,4 +58,4 @@ SELECT DISTINCT ?cho ?modelNaam ?placeName ?imageModel WHERE {
 		dct:spatial ?place ;
 		edm:isShownBy ?imageModel .
 } ORDER BY ?cho LIMIT 25
-`
+```
