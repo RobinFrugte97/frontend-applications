@@ -5,6 +5,7 @@
 	import Home from "./routes/Home.svelte";
 	import About from "./routes/About.svelte";
 	import Blog from "./routes/Blog.svelte";
+	import Detail from "./routes/Detail.svelte";
   	import { onMount } from "svelte";
 
 
@@ -31,7 +32,8 @@
 	} ORDER BY ?cho LIMIT 25
 	`
 
-	let data = {};
+	let data = [];
+	let instances = [];
 	function runQuery(queryUrl, query){
 	  //Test if the endpoint is up and print result to page
 	  // (you can improve this script by making the next part of this function wait for a succesful result)
@@ -57,6 +59,7 @@
     <Route path="about" component="{About}" />
     <Route path="blog/*" component="{Blog}" />
     <Route path="/" component="{Home}" data={data} />
+	<Route path="/details/*" component="{Detail}" />
 	<!-- <Route path=/{data.cho.value} /> -->
   </div>
 </Router>
