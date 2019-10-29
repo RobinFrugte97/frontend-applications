@@ -1,12 +1,12 @@
 <script>
-	import { Router, Route } from "svelte-routing";
 	export let url = "";
+	import { Router, Route } from "svelte-routing";
+  	import { onMount } from "svelte";
 	import NavLink from "./components/NavLink.svelte";
 	import Home from "./routes/Home.svelte";
 	import About from "./routes/About.svelte";
 	import Blog from "./routes/Blog.svelte";
 	import Detail from "./routes/Detail.svelte";
-  	import { onMount } from "svelte";
 
 
 
@@ -41,7 +41,7 @@
 	  .then(res => res.json())
 	  .then(json => {
 		  data = json.results.bindings
-		  console.log(data);
+
 	  })
 	}
 	onMount(() => {
