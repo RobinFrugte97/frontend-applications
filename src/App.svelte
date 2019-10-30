@@ -28,7 +28,7 @@
 	        dc:type ?type ;
 	        dct:spatial ?place ;
 	        edm:isShownBy ?imageModel .
-	} ORDER BY ?cho LIMIT 25
+	} ORDER BY ?cho LIMIT 5
 	`
 
 	let data = [];

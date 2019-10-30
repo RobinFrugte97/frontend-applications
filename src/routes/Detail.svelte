@@ -15,7 +15,6 @@
 		PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 		SELECT ?cho ?modelNaam ?placeName ?imageModel WHERE {
-
 		   <https://hdl.handle.net/20.500.11840/` + modelCho + `> dc:title ?modelNaam ;
 		        dc:type ?type ;
 		        dct:spatial ?place ;
@@ -43,6 +42,6 @@
 			
 </script>
 {#if dataModel.length == 1}
-<h1>{dataModel[0].modelNaam.value}</h1>
-<img src={dataModel[0].imageModel.value} alt="">
+	<h1>{dataModel[0].modelNaam.value}</h1>
+	<img src={dataModel[0].imageModel.value} alt="">
 {/if}
