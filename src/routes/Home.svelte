@@ -5,7 +5,9 @@
 </script>
 <style>
 	img {
-		width: 100%;
+		width: 81%;
+    	height: 7rem;
+    	margin-top: 2rem;		
 	}
 	div {
 		background: url("/images/indonesia.svg") no-repeat;
@@ -13,11 +15,38 @@
 		height: 55em;
 	}
 	li {
-		width: 25%;
+		position: absolute;
+		width: 14rem;
 		display: flex;
 		flex-direction: column;
-		height: 20em;
-		background-color: red;
+		height: 13em;
+		background-color: #efefef;
+		border-radius: 0px 5% 5% 5%;
+		transition-timing-function: ease;
+	}
+	li:hover {
+		transform: scale(1.05);
+
+	}
+	li:nth-of-type(1){
+		top: 68%;
+		left: 27%;
+	}
+	li:nth-of-type(2){
+		top: 42%;
+    	left: 82%;
+	}
+	li:nth-of-type(3){
+		top: 30%;
+		left: 47%;
+	}
+	li:nth-of-type(4){
+		top: 39%;
+    	left: 16%;
+	}
+	li:nth-of-type(5){
+		top: 72%;
+    	left: 68%;
 	}
 	ul {
 		display: flex;
@@ -28,6 +57,7 @@
 	a {
 		text-decoration: none;
 		color: black;
+		text-align: center;
 	}
 </style>
 <div>
@@ -35,8 +65,8 @@
 <ul>
 	{#each data as source}
 	<li><a href="details/{source.cho.value.slice(-6)}">
-		<h2>{source.modelNaam.value}</h2>
-		<img src={source.imageModel.value} alt={source.modelNaam.value}>
+		<img src={source.imageModel.value} alt={source.modelName.value}>
+		<h2>{source.modelName.value}</h2>
 	</a></li>
 	{/each}
 </ul>

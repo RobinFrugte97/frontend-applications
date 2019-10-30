@@ -37,8 +37,8 @@ By default, the server will only respond to requests from localhost.
 
 ## Tech
 
-[Svelte](https://svelte.dev/)
-[Svelte-routing](https://github.com/EmilTholin/svelte-routing)
+- [Svelte](https://svelte.dev/)
+- [Svelte-routing](https://github.com/EmilTholin/svelte-routing)
 
 ---
 
