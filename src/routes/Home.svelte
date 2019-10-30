@@ -22,7 +22,7 @@
 		height: 13em;
 		background-color: #efefef;
 		border-radius: 0px 5% 5% 5%;
-		transition-timing-function: ease;
+		transition: .5s ease;
 	}
 	li:hover {
 		transform: scale(1.05);
