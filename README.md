@@ -35,10 +35,18 @@ By default, the server will only respond to requests from localhost.
 
 ---
 
+## Tech
+
+[Svelte](https://svelte.dev/)
+[Svelte-routing](https://github.com/EmilTholin/svelte-routing)
+
+---
+
 ## Data
 
 The data I'm using comes from the API of [Netwerk digitaal erfgoed](https://www.netwerkdigitaalerfgoed.nl/), with my unique URL:
 `https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql`
+I'm gathering data about all the housemodels in Indonesia to get an idea about the architecture.
 
 The SPARQL query I use the retrieve all the data I need in the application:
 
