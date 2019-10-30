@@ -1,10 +1,11 @@
 <script>
   	import { onMount } from "svelte";
-	console.log("detail");
-	const queryUrl ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql"
+	const queryUrl2 ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql"
 	let modelCho = window.location.pathname.slice(-6);
-	let dataModel = [];
 	let queryModel = ``;
+	let dataModel = [];
+	console.log(dataModel);
+	
 	function getData(modelCho) {
 		queryModel = `
 		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -14,32 +15,34 @@
 		PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 		SELECT ?cho ?modelNaam ?placeName ?imageModel WHERE {
-		   <https://hdl.handle.net/20.500.11840/` + modelCho + `> ?b ?c .
-		   ?place skos:prefLabel ?placeName .
+
 		   <https://hdl.handle.net/20.500.11840/` + modelCho + `> dc:title ?modelNaam ;
 		        dc:type ?type ;
 		        dct:spatial ?place ;
 		        edm:isShownBy ?imageModel .
-		}
+		} LIMIT 1
 		`
 		console.log(queryModel);
 	}
-	function runQueryModel(queryUrl, queryModel){
-		console.log(queryUrl);
+	async function runQueryModel(queryUrl2, queryModel){
+		console.log(queryUrl2);
 		console.log(queryModel);
 		
 		
 	  //Test if the endpoint is up and print result to page
 	  // (you can improve this script by making the next part of this function wait for a succesful result)
-	  fetch(queryUrl+"?query="+ encodeURIComponent(queryModel) +"&format=json")
+	  await fetch(queryUrl2+"?query="+ encodeURIComponent(queryModel) +"&format=json")
 	  .then(res => res.json())
 	  .then(json => {
 		  dataModel = json.results.bindings
-		  console.log(dataModel);
+		  console.log(dataModel[0]);
 	  })
 	}
 	getData(modelCho);
-	runQueryModel(queryUrl, queryModel);
+	runQueryModel(queryUrl2, queryModel)
+			
 </script>
+{#if dataModel.length == 1}
 <h1>{dataModel[0].modelNaam.value}</h1>
 <img src={dataModel[0].imageModel.value} alt="">
+{/if}

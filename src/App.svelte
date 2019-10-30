@@ -5,7 +5,6 @@
 	import NavLink from "./components/NavLink.svelte";
 	import Home from "./routes/Home.svelte";
 	import About from "./routes/About.svelte";
-	import Blog from "./routes/Blog.svelte";
 	import Detail from "./routes/Detail.svelte";
 
 
@@ -33,7 +32,6 @@
 	`
 
 	let data = [];
-	let instances = [];
 	function runQuery(queryUrl, query){
 	  //Test if the endpoint is up and print result to page
 	  // (you can improve this script by making the next part of this function wait for a succesful result)
@@ -47,19 +45,17 @@
 	onMount(() => {
 		runQuery(queryUrl, query);
 	});
+	
+	
 </script>
 
 <Router url="{url}">
   <nav>
     <NavLink to="/">Home</NavLink>
-    <NavLink to="about">About</NavLink>
-    <NavLink to="blog">Blog</NavLink>
   </nav>
   <div>
     <Route path="about" component="{About}" />
-    <Route path="blog/*" component="{Blog}" />
     <Route path="/" component="{Home}" data={data} />
 	<Route path="/details/*" component="{Detail}" />
-	<!-- <Route path=/{data.cho.value} /> -->
   </div>
 </Router>

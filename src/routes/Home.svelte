@@ -1,7 +1,5 @@
 <script>
 	export let data;
-	export let queryUrl;
-	export let instances;
 	console.log("home");
 
 </script>
