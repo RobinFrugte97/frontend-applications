@@ -1,6 +1,5 @@
 <script>
 	export let data;
-	console.log("home");
 	import Object from '../components/Object.svelte'
 
 </script>
@@ -22,10 +21,6 @@
 	<Object link="details/{source.cho.value.slice(-6)}" 
 			imageSource={source.imageModel.value} 
 			objectTitle={source.modelName.value}/>
-	<!-- <li><a href="details/{source.cho.value.slice(-6)}">
-		<img src={source.imageModel.value} alt={source.modelName.value}>
-		<h2>{source.modelName.value}</h2>
-	</a></li> -->
 	{/each}
 </ul>
 </div>

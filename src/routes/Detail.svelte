@@ -1,7 +1,7 @@
 <script>
 
 	const queryUrl ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql"
-	let detailURI = window.location.pathname.slice(-6);
+	let detailURI = window.location.pathname.slice(-6); //slice the unique part from the URL to use for a second query to fetch detail page data.
 	let detailQuery = ``;
 	let detailData = [];
 	
@@ -27,11 +27,10 @@
 		.then(res => res.json())
 		.then(json => {
 			detailData = json.results.bindings
-			console.log(detailData[0]);
 		})
 	}
-	formulateQuery(detailURI);
-	runDetailQuery(queryUrl, detailQuery)
+	formulateQuery(detailURI); //put the unique part of the URI of the selected object in a SPARQL query.
+	runDetailQuery(queryUrl, detailQuery); //use the new query to fetch the data
 			
 </script>
 {#if detailData.length == 1}

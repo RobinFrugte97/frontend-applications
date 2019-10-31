@@ -6,6 +6,7 @@
 	import Home from "./routes/Home.svelte";
 	import Detail from "./routes/Detail.svelte";
 
+	// SPARQL query to fetch all housemodels from Indonesia
 	const queryUrl ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql"
 	const query = `
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -24,8 +25,9 @@
 	        edm:isShownBy ?imageModel .
 	} ORDER BY ?cho LIMIT 5
 	`
-
-	let data = [];
+	
+	let data = []; // Declare an empty array to put the fetched data into.
+	
 	function runQuery(queryUrl, query){
 	  fetch(queryUrl+"?query="+ encodeURIComponent(query) +"&format=json")
 	  .then(res => res.json())

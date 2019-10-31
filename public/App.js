@@ -945,12 +945,11 @@ const Object$1 = create_ssr_component(($$result, $$props, $$bindings, $$slots) =
 
 const css$1 = {
 	code: "div.svelte-725lez{background:url(\"/images/indonesia.svg\") no-repeat;background-size:100%;height:55em}ul.svelte-725lez{display:flex}",
-	map: "{\"version\":3,\"file\":\"Home.svelte\",\"sources\":[\"Home.svelte\"],\"sourcesContent\":[\"<script>\\r\\n\\texport let data;\\r\\n\\tconsole.log(\\\"home\\\");\\r\\n\\timport Object from '../components/Object.svelte'\\r\\n\\r\\n</script>\\r\\n<style>\\r\\n\\tdiv {\\r\\n\\t\\tbackground: url(\\\"/images/indonesia.svg\\\") no-repeat;\\r\\n\\t\\tbackground-size: 100%;\\r\\n\\t\\theight: 55em;\\r\\n\\t}\\r\\n\\tul {\\r\\n\\t\\tdisplay: flex;\\r\\n\\t}\\r\\n\\t\\r\\n</style>\\r\\n<div>\\r\\n<h1>Architectuur van Indonesië</h1>\\r\\n<ul>\\r\\n\\t{#each data as source}\\r\\n\\t<Object link=\\\"details/{source.cho.value.slice(-6)}\\\" \\r\\n\\t\\t\\timageSource={source.imageModel.value} \\r\\n\\t\\t\\tobjectTitle={source.modelName.value}/>\\r\\n\\t<!-- <li><a href=\\\"details/{source.cho.value.slice(-6)}\\\">\\r\\n\\t\\t<img src={source.imageModel.value} alt={source.modelName.value}>\\r\\n\\t\\t<h2>{source.modelName.value}</h2>\\r\\n\\t</a></li> -->\\r\\n\\t{/each}\\r\\n</ul>\\r\\n</div>\"],\"names\":[],\"mappings\":\"AAOC,GAAG,cAAC,CAAC,AACJ,UAAU,CAAE,IAAI,uBAAuB,CAAC,CAAC,SAAS,CAClD,eAAe,CAAE,IAAI,CACrB,MAAM,CAAE,IAAI,AACb,CAAC,AACD,EAAE,cAAC,CAAC,AACH,OAAO,CAAE,IAAI,AACd,CAAC\"}"
+	map: "{\"version\":3,\"file\":\"Home.svelte\",\"sources\":[\"Home.svelte\"],\"sourcesContent\":[\"<script>\\r\\n\\texport let data;\\r\\n\\timport Object from '../components/Object.svelte'\\r\\n\\r\\n</script>\\r\\n<style>\\r\\n\\tdiv {\\r\\n\\t\\tbackground: url(\\\"/images/indonesia.svg\\\") no-repeat;\\r\\n\\t\\tbackground-size: 100%;\\r\\n\\t\\theight: 55em;\\r\\n\\t}\\r\\n\\tul {\\r\\n\\t\\tdisplay: flex;\\r\\n\\t}\\r\\n\\t\\r\\n</style>\\r\\n<div>\\r\\n<h1>Architectuur van Indonesië</h1>\\r\\n<ul>\\r\\n\\t{#each data as source}\\r\\n\\t<Object link=\\\"details/{source.cho.value.slice(-6)}\\\" \\r\\n\\t\\t\\timageSource={source.imageModel.value} \\r\\n\\t\\t\\tobjectTitle={source.modelName.value}/>\\r\\n\\t{/each}\\r\\n</ul>\\r\\n</div>\"],\"names\":[],\"mappings\":\"AAMC,GAAG,cAAC,CAAC,AACJ,UAAU,CAAE,IAAI,uBAAuB,CAAC,CAAC,SAAS,CAClD,eAAe,CAAE,IAAI,CACrB,MAAM,CAAE,IAAI,AACb,CAAC,AACD,EAAE,cAAC,CAAC,AACH,OAAO,CAAE,IAAI,AACd,CAAC\"}"
 };
 
 const Home = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 	let { data } = $$props;
-	console.log("home");
 
 	if ($$props.data === void 0 && $$bindings.data && data !== void 0) $$bindings.data(data);
 
@@ -963,8 +962,7 @@ const Home = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 		link: `details/${escape(source.cho.value.slice(-6))}`,
 		imageSource: source.imageModel.value,
 		objectTitle: source.modelName.value
-	}, {}, {})}
-		`)}
+	}, {}, {})}`)}
 	</ul>
 	</div>`;
 });
@@ -975,7 +973,7 @@ const queryUrl ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/se
 
 const Detail = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 	
-	let detailURI = window.location.pathname.slice(-6);
+	let detailURI = window.location.pathname.slice(-6); //slice the unique part from the URL to use for a second query to fetch detail page data.
 	let detailQuery = ``;
 	let detailData = [];
 	
@@ -1001,11 +999,10 @@ const Detail = create_ssr_component(($$result, $$props, $$bindings, $$slots) => 
 		.then(res => res.json())
 		.then(json => {
 			detailData = json.results.bindings;
-			console.log(detailData[0]);
 		});
 	}
-	formulateQuery(detailURI);
-	runDetailQuery(queryUrl, detailQuery);
+	formulateQuery(detailURI); //put the unique part of the URI of the selected object in a SPARQL query.
+	runDetailQuery(queryUrl, detailQuery); //use the new query to fetch the data
 
 	return `${ detailData.length == 1 ? `<h1>${escape(detailData[0].modelName.value)}</h1>
 		<img${add_attribute("src", detailData[0].imageModel.value, 0)} alt="">` : `` }`;
@@ -1034,8 +1031,9 @@ const App = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 	        edm:isShownBy ?imageModel .
 	} ORDER BY ?cho LIMIT 5
 	`;
-
-	let data = [];
+	
+	let data = []; // Declare an empty array to put the fetched data into.
+	
 	function runQuery(queryUrl, query){
 	  fetch(queryUrl+"?query="+ encodeURIComponent(query) +"&format=json")
 	  .then(res => res.json())
