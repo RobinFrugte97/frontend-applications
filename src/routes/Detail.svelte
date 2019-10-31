@@ -1,7 +1,7 @@
 <script>	
-	export let data
-	
+	export let data;
 	import Related from '../components/Related.svelte';
+	import DetailContent from '../components/DetailContent.svelte';
 	const queryUrl ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql"
 	let detailURI = window.location.pathname.slice(-6); //slice the unique part from the URL to use for a second query to fetch detail page data.
 	let detailQuery = ``;
@@ -55,9 +55,6 @@
 		background: linear-gradient(to left, transparent 0%, #efefef 31% );
 		padding: 0;
 	}
-	div {
-		padding: 2rem;
-	}
 	main {
 		position: absolute;
 		background-color: #efefef;
@@ -67,25 +64,13 @@
 		padding: 1rem;
 		padding-left: 3rem;
 	}
-	img {
-		width: 40rem;
-	}
-	section {
-		display: flex;
-	}
+	
 </style>
 {#if detailData.length == 1}
 <div id="gradient">
 </div>
 <main>
-	<h1>{detailData[0].modelName.value}</h1>
-	<section>
-		<img src={detailData[0].imageModel.value} alt="{detailData[0].modelName.value}">
-		<div>
-			<p>{detailData[0].date.value}</p>
-			<p>Model van een Minangkabau woning met uitbreiding. In een Minangkabau familiewoning wonen meerdere gezinnen, alle afstammelingen van dezelfde grootmoeder. Het huis is verdeeld in evenveel afdelingen (ruangs) als er gezinnen wonen. Wordt een Minangkabau huis te klein dan kunnen aan weerszijden stukken worden bijgebouwd, waarvan het dak evenals dat van het oorspronkelijke gedeelte in spits toelopende punten (tanduk) eindigt. Het onderhavige model heeft vier punten. Er bestaan woningen van twee, vier, zes of acht punten.</p>
-		</div>
-	</section>
+<DetailContent title={detailData[0].modelName.value} image={detailData[0].imageModel.value} placeName={detailData[0].placeName.value} date={detailData[0].date.value} description="Model van een Minangkabau woning met uitbreiding. In een Minangkabau familiewoning wonen meerdere gezinnen, alle afstammelingen van dezelfde grootmoeder. Het huis is verdeeld in evenveel afdelingen (ruangs) als er gezinnen wonen. Wordt een Minangkabau huis te klein dan kunnen aan weerszijden stukken worden bijgebouwd, waarvan het dak evenals dat van het oorspronkelijke gedeelte in spits toelopende punten (tanduk) eindigt. Het onderhavige model heeft vier punten. Er bestaan woningen van twee, vier, zes of acht punten." />
 </main>
 <Related data={data}/>
 {/if}

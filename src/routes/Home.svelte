@@ -1,7 +1,6 @@
 <script>
 	export let data;
-	import Object from '../components/Object.svelte'
-
+	import Object from '../components/Object.svelte';
 </script>
 <style>
 	ul {
