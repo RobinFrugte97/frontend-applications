@@ -4,15 +4,9 @@
 
 </script>
 <style>
-	div {
-		background: url("/images/indonesia.svg") no-repeat;
-		background-size: 100%;
-		height: 55em;
-	}
 	ul {
 		display: flex;
 	}
-	
 </style>
 <div>
 <h1>Architectuur van Indonesië</h1>
