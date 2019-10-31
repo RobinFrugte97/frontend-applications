@@ -12,7 +12,8 @@
 <h1>Architectuur van Indonesië</h1>
 <ul>
 	{#each data as source}
-	<Object link="details/{source.cho.value.slice(-6)}" 
+	<Object data={data}
+			link="details/{source.cho.value.slice(-6)}" 
 			imageSource={source.imageModel.value} 
 			objectTitle={source.modelName.value}/>
 	{/each}

@@ -27,7 +27,7 @@
 	`
 	
 	let data = []; // Declare an empty array to put the fetched data into.
-	
+
 	function runQuery(queryUrl, query){
 	  fetch(queryUrl+"?query="+ encodeURIComponent(query) +"&format=json")
 	  .then(res => res.json())
@@ -49,6 +49,6 @@
   </nav>
   <div>
     <Route path="/" component="{Home}" data={data} />
-	<Route path="/details/*" component="{Detail}" />
+	<Route path="/details/*" component="{Detail}" data={data} />
   </div>
 </Router>

@@ -1,4 +1,6 @@
 <script>	
+	export let data
+	
 	import Related from '../components/Related.svelte';
 	const queryUrl ="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-08/sparql"
 	let detailURI = window.location.pathname.slice(-6); //slice the unique part from the URL to use for a second query to fetch detail page data.
@@ -85,5 +87,5 @@
 		</div>
 	</section>
 </main>
-<Related />
+<Related data={data}/>
 {/if}
