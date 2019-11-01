@@ -69,3 +69,5 @@ SELECT DISTINCT ?cho ?modelNaam ?placeName ?imageModel WHERE {
 		edm:isShownBy ?imageModel .
 } ORDER BY ?cho LIMIT 25
 ```
+
+I'm using the images, the nameplace, the title of all housemodels as "huismodel".
