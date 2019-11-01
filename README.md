@@ -70,4 +70,4 @@ SELECT DISTINCT ?cho ?modelNaam ?placeName ?imageModel WHERE {
 } ORDER BY ?cho LIMIT 25
 ```
 
-I'm using the images, the nameplace, the title of all housemodels as "huismodel".
+I'm using the images, the placename, the title of all housemodels as "huismodel".
